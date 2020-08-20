@@ -2,18 +2,20 @@
 //11-08-2020
 //started on 04-07-2018
 // La app di Heroku si puo richiamare da browser con
-//			https://rele4lamps.herokuapp.com/
+//			https://esp014rele.herokuapp.com/
+// Account Heroku:  dariomelucci@gmail.com   pwd:  Bg_142666
+// Account GitHub:	attiliomelucci@libero.it pwd:  Bg142666    name: attilio26
 
+/*API key = 1355761807:AAFcv6jHSsqypU-9z83neRKMXmMwKZudrwg
 
-/*API key = 410191340:AAG-7kkwvi6j6ajxuDy7ke1P8tDAh5bjC3U
-
-da browser request ->   https://rele4lamps.herokuapp.com/register.php
+da browser request ->   https://esp014rele.herokuapp.com/register.php
            answer  <-   {"ok":true,"result":true,"description":"Webhook was set"}
 In questo modo invocheremo lo script register.php che ha lo scopo di comunicare a Telegram
-lï¿½indirizzo dellï¿½applicazione web che risponderï¿½ alle richieste del bot.
+l’indirizzo dell’applicazione web che risponderà alle richieste del bot.
 
-da browser request ->   https://api.telegram.org/bot410191340:AAG-7kkwvi6j6ajxuDy7ke1P8tDAh5bjC3U/getMe
-           answer  <-   {"ok":true,"result":{"id":410191340,"is_bot":true,"first_name":"rele4lamps_bot","username":"lamptgbot"}}
+da browser request ->   https://api.telegram.org/bot1355761807:AAFcv6jHSsqypU-9z83neRKMXmMwKZudrwg/getMe
+           answer  <-   {"ok":true,"result":{"id":1355761807,"is_bot":true,"first_name":"Esp014rele","username":"Esp014bot","can_join_groups":true,
+					 "can_read_all_group_messages":false,"supports_inline_queries":false}}
 
 riferimenti:
 https://gist.github.com/salvatorecordiano/2fd5f4ece35e75ab29b49316e6b6a273
@@ -21,11 +23,11 @@ https://www.salvatorecordiano.it/creare-un-bot-telegram-guida-passo-passo/
 */
 
 //------passaggio da getupdates a  WEBHOOK
-//da browser request ->   https://api.telegram.org/bot410191340:AAG-7kkwvi6j6ajxuDy7ke1P8tDAh5bjC3U/setWebhook?url=https://rele4lamps.herokuapp.com/execute.php
+//da browser request ->   https://api.telegram.org/bot1355761807:AAFcv6jHSsqypU-9z83neRKMXmMwKZudrwg/setWebhook?url=https://esp014rele.herokuapp.com/execute.php
 //					 answer  <-   {"ok":true,"result":true,"description":"Webhook was set"}
 //          From now If the bot is using getUpdates, will return an object with the url field empty.
 //------passaggio da webhook a  GETUPDATES
-//da browser request ->   https://api.telegram.org/bot410191340:AAG-7kkwvi6j6ajxuDy7ke1P8tDAh5bjC3U/setWebhook?url=
+//da browser request ->   https://api.telegram.org/bot1355761807:AAFcv6jHSsqypU-9z83neRKMXmMwKZudrwg/setWebhook?url=
 //					 answer  <-   {"ok":true,"result":true,"description":"Webhook was deleted"}
 
 $content = file_get_contents("php://input");
@@ -84,58 +86,58 @@ if(strpos($text, "/start") === 0 || $text=="ciao" || $text == "help"){
 
 //<-- Comandi al rele GPIO0
 elseif(strpos($text,"r01")){
-	$resp = file_get_contents("http://dario95.ddns.net:20083/?a=1");
+	$resp = file_get_contents("http://dario95.ddns.net:28019/?a=1");
 	$response = clean_html_page($resp);
 }
 elseif(strpos($text,"r00")){
-	$resp = file_get_contents("http://dario95.ddns.net:20083/?a=0");
+	$resp = file_get_contents("http://dario95.ddns.net:28019/?a=0");
 	$response = clean_html_page($resp);
 }
 
 //<-- Comandi al rele GPIO1
 elseif(strpos($text,"r11")){
-	$resp = file_get_contents("http://dario95.ddns.net:20083/?a=3");
+	$resp = file_get_contents("http://dario95.ddns.net:28019/?a=3");
 	$response = clean_html_page($resp);
 }
 elseif(strpos($text,"r10")){
-	$resp = file_get_contents("http://dario95.ddns.net:20083/?a=2");
+	$resp = file_get_contents("http://dario95.ddns.net:28019/?a=2");
 	$response = clean_html_page($resp);
 }
 
 //<-- Comandi al rele GPIO2
 elseif(strpos($text,"r21")){
-	$resp = file_get_contents("http://dario95.ddns.net:20083/?a=5");
+	$resp = file_get_contents("http://dario95.ddns.net:28019/?a=5");
 	$response = clean_html_page($resp);
 }
 elseif(strpos($text,"r20")){
-	$resp = file_get_contents("http://dario95.ddns.net:20083/?a=4");
+	$resp = file_get_contents("http://dario95.ddns.net:28019/?a=4");
 	$response = clean_html_page($resp);
 }
 
 //<-- Comandi al rele GPIO3
 elseif(strpos($text,"r31")){
-	$resp = file_get_contents("http://dario95.ddns.net:20083/?a=7");
+	$resp = file_get_contents("http://dario95.ddns.net:28019/?a=7");
 	$response = clean_html_page($resp);
 }
 elseif(strpos($text,"r30")){
-	$resp = file_get_contents("http://dario95.ddns.net:20083/?a=6");
+	$resp = file_get_contents("http://dario95.ddns.net:28019/?a=6");
 	$response = clean_html_page($resp);
 }
 
 //<-- Comandi a TUTTI i rele
 elseif(strpos($text,"rf1")){
-	$resp = file_get_contents("http://dario95.ddns.net:20083/?a=9");
+	$resp = file_get_contents("http://dario95.ddns.net:28019/?a=9");
 	$response = clean_html_page($resp);
 }
 elseif(strpos($text,"rf0")){
-	$resp = file_get_contents("http://dario95.ddns.net:20083/?a=8");
+	$resp = file_get_contents("http://dario95.ddns.net:28019/?a=8");
 	$response = clean_html_page($resp);
 }
 
 
 //<-- Lettura stato dei rele 
 elseif(strpos($text,"stato")){
-	$resp = file_get_contents("http://dario95.ddns.net:20083");
+	$resp = file_get_contents("http://dario95.ddns.net:28019");
 	$response = clean_html_page($resp);
 }
 
@@ -151,9 +153,9 @@ else
 // Gli EMOTICON sono a:     http://www.charbase.com/block/miscellaneous-symbols-and-pictographs
 //													https://unicode.org/emoji/charts/full-emoji-list.html
 //													https://apps.timwhitlock.info/emoji/tables/unicode
-// la mia risposta ï¿½ un array JSON composto da chat_id, text, method
+// la mia risposta è un array JSON composto da chat_id, text, method
 // chat_id mi consente di rispondere allo specifico utente che ha scritto al bot
-// text ï¿½ il testo della risposta
+// text è il testo della risposta
 $parameters = array('chat_id' => $chatId, "text" => $response);
 $parameters["method"] = "sendMessage";
 // imposto la keyboard
@@ -166,33 +168,3 @@ $parameters["reply_markup"] = '{ "keyboard": [
 // converto e stampo l'array JSON sulla response
 echo json_encode($parameters);
 ?>
-<?
-$client = new Zelenin\Telegram\Bot\Api('410191340:AAG-7kkwvi6j6ajxuDy7ke1P8tDAh5bjC3U'); // Set your access token
-
-?>
-
-web: vendor/bin/heroku-php-apache2 /
-
-# Telegram Echo Bot
-
-This is a sample Telegram Bot written in PHP running on Heroku
-
-<?php
-
-// PARAMETRI DA MODIFICARE
-$WEBHOOK_URL = 'https://rele4lamps.herokuapp.com/execute.php';
-$BOT_TOKEN = '410191340:AAG-7kkwvi6j6ajxuDy7ke1P8tDAh5bjC3U';
-
-// NON APPORTARE MODIFICHE NEL CODICE SEGUENTE
-$API_URL = 'https://api.telegram.org/bot' . $BOT_TOKEN .'/';
-$method = 'setWebhook';
-$parameters = array('url' => $WEBHOOK_URL);
-$url = $API_URL . $method. '?' . http_build_query($parameters);
-$handle = curl_init($url);
-curl_setopt($handle, CURLOPT_RETURNTRANSFER, true);
-curl_setopt($handle, CURLOPT_CONNECTTIMEOUT, 5);
-curl_setopt($handle, CURLOPT_TIMEOUT, 60);
-$result = curl_exec($handle);
-print_r($result);
-
-{}
