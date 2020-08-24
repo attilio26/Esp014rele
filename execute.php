@@ -1,5 +1,5 @@
 <?php
-//11-08-2020
+//24-08-2020
 //started on 04-07-2018
 // La app di Heroku si puo richiamare da browser con
 //			https://esp014rele.herokuapp.com/
@@ -76,20 +76,20 @@ $response = '';
 
 if(strpos($text, "/start") === 0 || $text=="ciao" || $text == "help"){
 	$response = "Ciao $firstname, benvenuto! \n List of commands : 
-	/r01 -> GPIO0 LOW  /r00 -> GPIO0 HIGH
-	/r11 -> GPIO1 LOW  /r10 -> GPIO1 HIGH 
-	/r21 -> GPIO2 LOW  /r20 -> GPIO2 HIGH 
-	/r31 -> GPIO3 LOW  /r30 -> GPIO3 HIGH 
-	/rf1 -> GPIOx LOW  /rf0 -> GPIOx HIGH 
+	/mur1 -> GPIO0 LOW  /mur0 -> GPIO0 HIGH
+	/r11  -> GPIO1 LOW  /r10  -> GPIO1 HIGH 
+	/r21  -> GPIO2 LOW  /r20  -> GPIO2 HIGH 
+	/tlc1 -> GPIO3 LOW  /tlc0 -> GPIO3 HIGH 
+	/rf1  -> GPIOx LOW  /rf0  -> GPIOx HIGH 
 	/stato 		-> Stato rele     \n/verbose -> parametri del messaggio";
 }
 
 //<-- Comandi al rele GPIO0
-elseif(strpos($text,"r01")){
+elseif(strpos($text,"mur1")){
 	$resp = file_get_contents("http://dario95.ddns.net:28019/?a=1");
 	$response = clean_html_page($resp);
 }
-elseif(strpos($text,"r00")){
+elseif(strpos($text,"mur0")){
 	$resp = file_get_contents("http://dario95.ddns.net:28019/?a=0");
 	$response = clean_html_page($resp);
 }
@@ -115,11 +115,11 @@ elseif(strpos($text,"r20")){
 }
 
 //<-- Comandi al rele GPIO3
-elseif(strpos($text,"r31")){
+elseif(strpos($text,"tlc1")){
 	$resp = file_get_contents("http://dario95.ddns.net:28019/?a=7");
 	$response = clean_html_page($resp);
 }
-elseif(strpos($text,"r30")){
+elseif(strpos($text,"tlc0")){
 	$resp = file_get_contents("http://dario95.ddns.net:28019/?a=6");
 	$response = clean_html_page($resp);
 }
@@ -160,8 +160,8 @@ $parameters = array('chat_id' => $chatId, "text" => $response);
 $parameters["method"] = "sendMessage";
 // imposto la keyboard
 $parameters["reply_markup"] = '{ "keyboard": [
-["/r31 \ud83d\udd34", "/r21 \ud83d\udd34", "/r11 \ud83d\udd34", "/r01 \ud83d\udd34"],
-["/r30 \ud83d\udd35", "/r20 \ud83d\udd35", "/r10 \ud83d\udd35", "/r00 \ud83d\udd35"],
+["/tlc1 \ud83d\udd34", "/r21 \ud83d\udd34", "/r11 \ud83d\udd34", "/mur1 \ud83d\udd34"],
+["/tlc0 \ud83d\udd35", "/r20 \ud83d\udd35", "/r10 \ud83d\udd35", "/mur0 \ud83d\udd35"],
 ["/rf0 \ud83d\udd35", "/rf1 \ud83d\udd34"],
 ["/stato \u2753"]],
  "resize_keyboard": true, "one_time_keyboard": false}';
