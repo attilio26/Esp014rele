@@ -1,5 +1,5 @@
 <?php
-//24-08-2020
+//27-08-2020
 //started on 04-07-2018
 // La app di Heroku si puo richiamare da browser con
 //			https://esp014rele.herokuapp.com/
@@ -86,51 +86,51 @@ if(strpos($text, "/start") === 0 || $text=="ciao" || $text == "help"){
 
 //<-- Comandi al rele GPIO0
 elseif(strpos($text,"mur1")){
-	$resp = file_get_contents("http://dario95.ddns.net:28019/?a=1");
+	$resp = file_get_contents("http://dario95.ddns.net:28019/?a=0");
 	$response = clean_html_page($resp);
 }
 elseif(strpos($text,"mur0")){
-	$resp = file_get_contents("http://dario95.ddns.net:28019/?a=0");
+	$resp = file_get_contents("http://dario95.ddns.net:28019/?a=1");
 	$response = clean_html_page($resp);
 }
 
 //<-- Comandi al rele GPIO1
 elseif(strpos($text,"r11")){
-	$resp = file_get_contents("http://dario95.ddns.net:28019/?a=3");
+	$resp = file_get_contents("http://dario95.ddns.net:28019/?a=2");
 	$response = clean_html_page($resp);
 }
 elseif(strpos($text,"r10")){
-	$resp = file_get_contents("http://dario95.ddns.net:28019/?a=2");
+	$resp = file_get_contents("http://dario95.ddns.net:28019/?a=3");
 	$response = clean_html_page($resp);
 }
 
 //<-- Comandi al rele GPIO2
 elseif(strpos($text,"r21")){
-	$resp = file_get_contents("http://dario95.ddns.net:28019/?a=5");
+	$resp = file_get_contents("http://dario95.ddns.net:28019/?a=4");
 	$response = clean_html_page($resp);
 }
 elseif(strpos($text,"r20")){
-	$resp = file_get_contents("http://dario95.ddns.net:28019/?a=4");
+	$resp = file_get_contents("http://dario95.ddns.net:28019/?a=5");
 	$response = clean_html_page($resp);
 }
 
 //<-- Comandi al rele GPIO3
 elseif(strpos($text,"tlc1")){
-	$resp = file_get_contents("http://dario95.ddns.net:28019/?a=7");
+	$resp = file_get_contents("http://dario95.ddns.net:28019/?a=6");
 	$response = clean_html_page($resp);
 }
 elseif(strpos($text,"tlc0")){
-	$resp = file_get_contents("http://dario95.ddns.net:28019/?a=6");
+	$resp = file_get_contents("http://dario95.ddns.net:28019/?a=7");
 	$response = clean_html_page($resp);
 }
 
 //<-- Comandi a TUTTI i rele
 elseif(strpos($text,"rf1")){
-	$resp = file_get_contents("http://dario95.ddns.net:28019/?a=9");
+	$resp = file_get_contents("http://dario95.ddns.net:28019/?a=8");
 	$response = clean_html_page($resp);
 }
 elseif(strpos($text,"rf0")){
-	$resp = file_get_contents("http://dario95.ddns.net:28019/?a=8");
+	$resp = file_get_contents("http://dario95.ddns.net:28019/?a=9");
 	$response = clean_html_page($resp);
 }
 
