@@ -39,7 +39,7 @@ if(!$update)
 }
 
 function clean_html_page($str_in){
-	$startch = strpos($str_in,"<!DOCTYPE html>") + 1 ;									//primo carattere utile da estrarre
+	$startch = strpos($str_in,"SPEGNI") + 1 ;									//primo carattere utile da estrarre
 	//$endch = strpos($str_in," </a></h2><foot");									//ultimo carattere utile da estrarre
 	$str_in = substr($str_in,$startch);				
 /*	$str_in = substr($str_in,$startch,$endch - $startch);				// substr(string,start,length)
