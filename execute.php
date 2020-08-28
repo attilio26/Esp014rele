@@ -1,5 +1,5 @@
 <?php
-//27-08-2020
+//28-08-2020
 //started on 04-07-2018
 // La app di Heroku si puo richiamare da browser con
 //			https://esp014rele.herokuapp.com/
@@ -40,7 +40,7 @@ if(!$update)
 
 function clean_html_page($str_in){
 	$startch = strpos($str_in,"</header><h2>") + 13 ;							//primo carattere utile da estrarre
-	//$endch = strpos($str_in," </a></h2><foot");									//ultimo carattere utile da estrarre
+	$endch = strpos($str_in," </a></h2><foot");									//ultimo carattere utile da estrarre
 	$str_in = substr($str_in,$startch);				
 /*	$str_in = substr($str_in,$startch,$endch - $startch);				// substr(string,start,length)
 	$str_in = str_replace("<a href='?a="," ",$str_in);
